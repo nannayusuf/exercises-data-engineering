@@ -2,7 +2,11 @@
 
 ## Description
 
+<<<<<<< HEAD
 This repository contains the solution to the **Data Engineering** exercise from [Daniel Beach's Data Engineering Practice repository](https://github.com/danielbeach/data-engineering-practice/tree/main?tab=readme-ov-file), where the objective was to **download ZIP files** from a list of provided URLs, **extract the CSV files** from those ZIPs, and **store them in a local folder** named `downloads`.
+=======
+This repository contains the solution to the **Data Engineering** exercise, where the objective was to **download ZIP files** from a list of provided URLs, **extract the CSV files** from those ZIPs, and **store them in a local folder** named `downloads`.
+>>>>>>> 1ef0c39effd1a5528fd675d7b705a39d28c41a39
 
 ## What Was Requested
 
@@ -15,7 +19,11 @@ The exercise required the following tasks:
 5. **Use Docker** to run the code within a container, as specified in the instructions.
 
 ### Additional Tasks (Extra Credit):
+<<<<<<< HEAD
 - The exercise also requested implementing **asynchronous downloading** and using **ThreadPoolExecutor** for parallel downloads. This part has been implemented to improve the performance of downloading the files simultaneously.
+=======
+- The exercise also requested implementing asynchronous downloading and using **ThreadPoolExecutor** for parallel downloads, but this part was not implemented in this version of the code.
+>>>>>>> 1ef0c39effd1a5528fd675d7b705a39d28c41a39
 
 ## What Was Done
 
@@ -31,6 +39,7 @@ To resolve this exercise, the following steps were completed:
 3. **Implemented the `extract_csv` function**:
    - A function to extract the CSV file from each ZIP file was created using the `zipfile` library. After extracting, the ZIP file is deleted to save space.
 
+<<<<<<< HEAD
 4. **Asynchronous Downloads**:
    - The downloading of files was made **asynchronous** using `aiohttp` and `asyncio` to allow downloading multiple files simultaneously, improving performance.
    - The `download_files_concurrently` function was added to handle the concurrent download of files.
@@ -39,3 +48,8 @@ To resolve this exercise, the following steps were completed:
    - Docker was used to create a consistent environment for running the script, as required by the exercise.
 
    -
+=======
+4. **Docker Integration**:
+   - Docker was used to create a consistent environment for running the script, as required by the exercise.
+   - A `Dockerfile` and `docker-compose.yml` w
+>>>>>>> 1ef0c39effd1a5528fd675d7b705a39d28c41a39
