@@ -1,52 +1,36 @@
-## Exercise #1 - Downloading Files with Python.
+# Data Engineering Exercise Solution
 
-In this first exercise you will practice your Python skills,
-as well as learn about a very common task ... downloading data files
-from a `HTTP` source. 
-You will have to unzip the files with Python as well.
+## Description
 
+This repository contains the solution to the **Data Engineering** exercise, where the objective was to **download ZIP files** from a list of provided URLs, **extract the CSV files** from those ZIPs, and **store them in a local folder** named `downloads`.
 
-#### Setup
-1. Change directories at the command line 
-   to be inside the `Exercise-1` folder `cd Exercises/Exercise-1`
-   
-2. Run `docker build --tag=exercise-1 .` to build the `Docker` image.
+## What Was Requested
 
-3. There is a file called `main.py` in the `Exercise-1` directory, this
-is where you `Python` code to complete the exercise should go.
-   
-4. Once you have finished the project or want to test run your code,
-   run the following command `docker-compose up run` from inside the `Exercises/Exercise-1` directory
+The exercise required the following tasks:
 
-#### Problems Statement
-You need to download 10 files that are sitting at the following specified
-`HTTP` urls. You will use the `Python` package `requests` to do this
-work.
+1. **Download 10 files** from specified URLs.
+2. **Extract the CSV files** from inside the ZIP files.
+3. **Store the extracted files** in a folder named `downloads`.
+4. If the URL was invalid or the file did not exist, the code should **ignore that URL** and continue with the remaining URLs.
+5. **Use Docker** to run the code within a container, as specified in the instructions.
 
-You will need to pull the filename from the download uri.
+### Additional Tasks (Extra Credit):
+- The exercise also requested implementing asynchronous downloading and using **ThreadPoolExecutor** for parallel downloads, but this part was not implemented in this version of the code.
 
-The files are `zip` files that will also need to be unzipped into 
-their `csv` format.
+## What Was Done
 
-They should be downloaded into a folder called `downloads` which
-does not exist currently inside the `Exercise-1` folder. You should
-use `Python` to create the directory, do not do it manually.
+To resolve this exercise, the following steps were completed:
 
-Generally, your script should do the following ...
-1. create the directory `downloads` if it doesn't exist
-2. download the files one by one.
-3. split out the filename from the uri, so the file keeps its 
-   original filename.
-   
-4. Each file is a `zip`, extract the `csv` from the `zip` and delete
-the `zip` file.
-5. For extra credit, download the files in an `async` manner using the 
-   `Python` package `aiohttp`. Also try using `ThreadPoolExecutor` in 
-   `Python` to download the files. Also write unit tests to improve your skills.
+1. **Created the `create_downloads_dir` function**:
+   - A function was created to ensure the `downloads` folder is created if it doesn’t already exist, using `os.makedirs()`.
 
-#### Download URIs are listed in the `main.py` file.
+2. **Developed the `download_file` function**:
+   - The `download_file` function was implemented to download files from the provided URLs.
+   - To check if the URL was valid (and avoid 404 errors), the function also performs a check using `requests.head()` before proceeding with the download.
 
-### Hints
-1. Don't assume all the uri's are valid.
-2. One approach would be the `Python` method `split()` to retrieve filename for uri,
-or maybe find the last occurrence of `/` and take the rest of the string.
+3. **Implemented the `extract_csv` function**:
+   - A function to extract the CSV file from each ZIP file was created using the `zipfile` library. After extracting, the ZIP file is deleted to save space.
+
+4. **Docker Integration**:
+   - Docker was used to create a consistent environment for running the script, as required by the exercise.
+   - A `Dockerfile` and `docker-compose.yml` w
